@@ -2,11 +2,13 @@ import { useState } from "react";
 import "./index.css";
 import "./App.css";
 import Test from "./components/Test";
+import PreTest from "./components/PreTest";
 
 function App() {
   return (
     <div>
-      <Test />
+      <PreTest />
+      {/* <Test /> */}
     </div>
   );
 }
