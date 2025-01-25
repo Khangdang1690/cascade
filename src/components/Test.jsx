@@ -1,27 +1,27 @@
 import React from "react";
 import "./Test.css";
 
-const Test = () => {
-  const n = 11;
-  const days = 30;
-  const chartdata = [
-    [1, 3],
-    [2, 5],
-    [6, 8],
-    [8, 10],
-    [11, 13],
-    [13, 15],
-    [13, 20],
-    [17, 22],
-    [23, 24],
-    [25, 30],
-    [30, 30],
-  ];
+const Test = (props) => {
+  // const n = 11;
+  // const days = 30;
+  // const chartdata = [
+  //   [1, 3],
+  //   [2, 5],
+  //   [6, 8],
+  //   [8, 10],
+  //   [11, 13],
+  //   [13, 15],
+  //   [13, 20],
+  //   [17, 22],
+  //   [23, 24],
+  //   [25, 30],
+  //   [30, 30],
+  // ];
 
   return (
-    <div class="chart">
-      <div class="tasks">
-        {Array.from({ length: n }).map((task, id) => {
+    <div className="chart">
+      <div className="tasks">
+        {Array.from({ length: props.n }).map((task, id) => {
           return (
             <div className="task" contenteditable="true">
               {`Task ${id + 1}`}
@@ -29,15 +29,15 @@ const Test = () => {
           );
         })}
       </div>
-      <div class="timeline_wrapper">
-        <div class="timeline">
-          {Array.from({ length: n }).map((task, id) => {
+      <div className="timeline_wrapper">
+        <div className="timeline">
+          {Array.from({ length: props.n }).map((task, id) => {
             return (
               <div className="timerow">
-                {Array.from({ length: days }).map((days, id2) => {
+                {Array.from({ length: props.days }).map((days, id2) => {
                   if (
-                    id2 + 1 >= chartdata[id][0] &&
-                    id2 + 1 <= chartdata[id][1]
+                    id2 + 1 >= props.chartdata[id][0] &&
+                    id2 + 1 <= props.chartdata[id][1]
                   ) {
                     return (
                       <div
