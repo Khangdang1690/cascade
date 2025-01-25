@@ -1,12 +1,7 @@
-import { useState } from 'react'
+import { useState } from "react";
 
 function Homepage() {
-
-  return (
-    <>
-        
-    </>
-  )
+  return <div></div>;
 }
 
 export default Homepage;
