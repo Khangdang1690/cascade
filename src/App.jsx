@@ -5,6 +5,7 @@ import Test from "./components/Test";
 import Navbar from "./components/navbar/navbar";
 import { Route, Routes } from "react-router";
 import Homepage from "./components/homepage/homepage";
+import PreTest from "./components/PreTest";
 
 function App() {
   return (
@@ -12,8 +13,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Homepage />}/>
-        <Route path="/create" element={}/>
-        <Test />
+        <Route path="/create" element={<PreTest />}/>
       </Routes>
     </div>
   );
