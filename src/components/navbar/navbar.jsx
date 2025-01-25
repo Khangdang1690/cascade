@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <>
     <div className="nav-bar-temp"></div>
-    <div className = "nav-bar-container">
+    <div className = "nav-bar-container">                                
       <img src={Logo} alt="Logo" className="nav-logo"/>
       <nav>
         <ul>
