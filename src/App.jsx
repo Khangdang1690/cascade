@@ -7,11 +7,13 @@ import { Route, Routes } from "react-router";
 import Homepage from "./components/homepage/homepage";
 import Storage from "./components/storage/storage";
 import PreTest from "./components/PreTest";
+import Footer from "./components/footer/Footer"
 
 function App() {
   return (
     <div>
       <Navbar />
+      <Footer />
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/create" element={<PreTest />}/>
