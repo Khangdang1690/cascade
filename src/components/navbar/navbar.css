@@ -1,12 +1,18 @@
 .nav-bar-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   position: fixed;
   background-color: transparent;
   backdrop-filter: blur(10px);
   top: 0;
   gap: 100px;
   width: 100%;
+  height: 80px;
+}
+
+.nav-bar-temp {
+  height: 80px;
 }
 
 .nav-bar-container ul{ 
@@ -41,8 +47,9 @@
   border-radius: 50px;
   height: 25px;
   padding: 8px;
-  top: 4px;
+  top: 50%;
   left: 100px;
+  transform: translate(0, -50%);
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 3));
 }
 
