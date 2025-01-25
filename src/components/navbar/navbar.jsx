@@ -12,9 +12,9 @@ function Navbar() {
       <img src={Logo} alt="Logo" className="nav-logo"/>
       <nav>
         <ul>
-          <li><div href="#home">Home</div></li>
-          <li><div href="#cascade">Create your waterfall charts</div></li>
-          <li><div href="#storage">Storage</div></li>
+          <li><div>Home</div></li>
+          <li><div>Create your waterfall charts</div></li>
+          <li><div>Storage</div></li>
         </ul>
       </nav>  
     </div>
