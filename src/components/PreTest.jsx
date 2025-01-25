@@ -10,7 +10,7 @@ const PreTest = () => {
 
   useEffect(() => {
     let array = [];
-    if (start > 0 && end > 0 && start < end) {
+    if (start > 0 && end > 0 && start <= end) {
       array.push(start);
       array.push(end);
       setDurations([...durations, array]);
