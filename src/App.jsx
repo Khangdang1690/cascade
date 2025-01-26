@@ -13,13 +13,13 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Footer />
       <Routes>
         <Route path="/" element={<Homepage />}/>
         <Route path="/create" element={<PreTest />}/>
         <Route path="/storage" element={<Storage />}/>
         <Route path="*" element={<div style={{color: "white"}}>404 Not Found</div>} />
       </Routes>
+      <Footer />
     </div>
   );
 }
