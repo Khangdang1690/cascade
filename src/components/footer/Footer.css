@@ -2,5 +2,19 @@
   position: fixed;
   background-color: transparent;
   backdrop-filter: blur(10px);
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%;
+  height: max-content;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
 }
+
+.text-des {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
