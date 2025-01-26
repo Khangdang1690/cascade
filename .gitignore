@@ -1,4 +1,5 @@
-./src/components/.env
+# ./src/components/.env
+.env
 # Logs
 logs
 *.log
