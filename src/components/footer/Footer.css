@@ -1,0 +1,6 @@
+.footer-block{
+  position: fixed;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  justify-content: space-around;
+}
