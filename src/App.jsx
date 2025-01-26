@@ -8,13 +8,15 @@ import Homepage from "./components/homepage/homepage";
 import Storage from "./components/storage/storage";
 import PreTest from "./components/PreTest";
 import Footer from "./components/footer/Footer"
-
+import Form from "./components/storage/Form";
 function App() {
   return (
     <div>
       <Navbar />
       <Footer />
+      
       <Routes>
+        <Route path="/form" element={<Form/>}/>
         <Route path="/" element={<Homepage />}/>
         <Route path="/create" element={<PreTest />}/>
         <Route path="/storage" element={<Storage />}/>
