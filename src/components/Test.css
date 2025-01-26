@@ -2,16 +2,21 @@
   display: grid;
   grid-template-columns: 1fr 4fr;
   border: 1px solid black;
-  width: 500px;
+  /* width: 500px; */
+  width: 100%;
   height: 200px;
   overflow-y: auto;
+  align-self: center;
 }
 
 .tasks {
   display: grid;
-  grid-template-rows: repeat(auto-fill, 1fr);
+  /* grid-template-rows: repeat(auto-fill, minmax(0, 1fr)); */
+  /* grid-template-rows: repeat(auto-fill, 1fr); */
+  grid-auto-rows: 1fr;
   border-right: 1px solid black;
   background-color: white;
+  /* height: 100%; */
 }
 
 .task {
@@ -24,36 +29,41 @@
   border-bottom: none;
 }
 
-.timeline,
 .timeline_wrapper {
-  display: grid;
-  grid-template-rows: repeat(auto-fill, 1fr);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.55);
+  position: relative;
+  z-index: 100;
   overflow-x: scroll;
   scrollbar-width: none;
 }
 
-.timeline::-webkit-scrollbar {
+.timeline {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 1fr);
+  grid-auto-rows: 1fr;
+  height: 100%;
+  position: relative;
+  z-index: 80;
+}
+
+.timeline_wrapper::-webkit-scrollbar {
   display: none;
 }
 
 .timerow {
   display: flex;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 }
 
-.timeline_wrapper {
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.55);
-}
-
-.timerow:last-child {
+.timerow:last-child .timeslot {
   border-bottom: none;
+  padding-bottom: 1px;
 }
 
 .timeslot {
   border-right: 1px solid black;
-  height: auto;
-  width: 50px;
-  z-index: -1;
+  border-bottom: 1px solid black;
+  width: 80px;
   background-color: white;
 }
 
