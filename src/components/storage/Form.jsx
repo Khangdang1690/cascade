@@ -18,7 +18,6 @@ const Form = () => {
       const result = await generateProjectPlan(projectIdea, startDate, endDate);
       setResponse(result);
       console.log(result);
-      
 
       setTasks(result.split("ENDTASK"));
       // console.log("tasks", tasks);
@@ -131,14 +130,28 @@ const Form = () => {
             Generated Project Plan:
           </h2>
           <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word" }}>
-            {response}
+            {response.split("ENDTASK").map((task, id) => {
+              const fields = task.split("ENDFIELD");
+              if (fields[0] == "") return;
+              return (
+                <div style={{ marginBottom: "1em" }}>
+                  <span style={{ fontWeight: "bold" }}>Task:</span>{" "}
+                  {fields[0]
+                    .replace("'taskName': ", "")
+                    .replace("\n\n", "")
+                    .replace("\n", "")}
+                  {"\n"}
+                  <span style={{ fontWeight: "bold" }}>Duration:</span>{" "}
+                  {fields[1].replace("'duration': ", "").replace(" ", "")}
+                  {"\n"}
+                  <span style={{ fontWeight: "bold" }}>Description:</span>{" "}
+                  {fields[2].replace("'description':", "").replace("  ", "")}
+                </div>
+              );
+            })}
           </pre>
           {/* <Test n={tasks.length} days={days} chartdata={durations} /> */}
-          <Test
-            tasks={tasks}
-            startDate={startDate}
-            endDate={endDate}
-          />
+          <Test tasks={tasks} startDate={startDate} endDate={endDate} />
         </div>
       )}
     </div>
