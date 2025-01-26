@@ -18,26 +18,77 @@ const Test = (props) => {
   //   [30, 30],
   // ];
 
+  // const now = new Date();
+
+  console.log(props);
+  const startDate = new Date(props.startDate);
+  const endDate = new Date(props.endDate);
+  console.log((endDate - startDate) / (1000 * 60 * 60 * 24) + 1);
+  const days = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
+
   return (
     <div className="chart">
       <div className="tasks">
-        {Array.from({ length: props.n }).map((task, id) => {
+        <div className="task">
+          Tasks
+        </div>
+        {props.tasks.map((task, id) => {
+          if (task == "") return;
           return (
             <div className="task" contenteditable="true">
-              {`Task ${id + 1}`}
+              {`${task.split("ENDFIELD")[0].replace("'taskName':", "")}`}
             </div>
           );
         })}
       </div>
       <div className="timeline_wrapper">
         <div className="timeline">
-          {Array.from({ length: props.n }).map((task, id) => {
+          <div className="timerow">
+            {Array.from(
+              {
+                length: days,
+              },
+              (_, i) => {
+                const date = new Date(props.startDate);
+                date.setDate(date.getDate() + (i + 1));
+                return date;
+              }
+            ).map((d, index) => {
+              return <div className="timeslot">{d.toDateString()}</div>;
+            })}
+          </div>
+          {props.tasks.map((task, id) => {
+            if (task == "") return;
             return (
               <div className="timerow">
-                {Array.from({ length: props.days }).map((days, id2) => {
+                {Array.from(
+                  {
+                    length: days,
+                  },
+                  (_, i) => {
+                    const date = new Date(props.startDate);
+                    date.setDate(date.getDate() + (i + 1));
+                    return date;
+                  }
+                ).map((d, index) => {
+                  d.setHours(0, 0, 0, 0);
                   if (
-                    id2 + 1 >= props.chartdata[id][0] &&
-                    id2 + 1 <= props.chartdata[id][1]
+                    d >=
+                      new Date(
+                        task
+                          .split("ENDFIELD")[1]
+                          .split("to")[0]
+                          .replace("'duration':", "")
+                          .replace(" ", "")
+                      ) &&
+                    d <=
+                      new Date(
+                        task
+                          .split("ENDFIELD")[1]
+                          .split("to")[1]
+                          .replace("'duration':", "")
+                          .replace(" ", "")
+                      )
                   ) {
                     return (
                       <div

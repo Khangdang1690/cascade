@@ -1,7 +1,7 @@
-import axios from 'axios';
+import axios from "axios";
 
 // Access the API key using Vite's import.meta.env
-const apiKey =  import.meta.env.VITE_NEBIUS_API_KEY;
+const apiKey = import.meta.env.VITE_NEBIUS_API_KEY;
 
 if (!apiKey) {
   throw new Error("API Key is missing or incorrect!");
@@ -15,15 +15,21 @@ export const generateProjectPlan = async (projectIdea, startDate, endDate) => {
     messages: [
       {
         role: "user",
-        content: `Generate a detailed project plan for the following idea: ${projectIdea}, starting from ${startDate} and ending on ${endDate}. The output should be in this format: \n\n` +
-          '[{"taskName": "Research user needs", "duration": "2025-01-01 to 2025-01-07", "description": "Conduct surveys using Google Forms and interviews via Zoom to identify key features users want in the app."}, ' +
-          '{"taskName": "Design app UI/UX", "duration": "2025-01-08 to 2025-01-14", "description": "Create wireframes in Figma and high-fidelity mockups in Adobe XD, focusing on intuitive navigation and accessibility."}, ' +
-          '{"taskName": "Develop core functionality", "duration": "2025-01-15 to 2025-02-10", "description": "Use Flutter and Firebase to build features like expense tracking, budgeting, and generating financial reports."}, ' +
-          '{"taskName": "Test app functionality", "duration": "2025-02-11 to 2025-02-20", "description": "Perform unit testing with Jest and integration testing using Selenium to identify and fix bugs."}, ' +
-          '{"taskName": "Launch and gather feedback", "duration": "2025-02-21 to 2025-03-01", "description": "Deploy the app on Google Play and the Apple App Store, and use tools like Google Analytics and user reviews for feedback."}]'
-      }
+        content:
+          `Generate a detailed project plan for the following idea: ${projectIdea}, starting from ${startDate} and ending on ${endDate}. The output should be in this format (Add ENDFIELD after every field: 'taskName', 'duration', and 'description'. Add ENDTASK after every task. Don't add any notes before or after. Just generate a response in the format below.): \n\n` +
+          "'taskName': Research user needs ENDFIELD 'duration': 2025-01-01 to 2025-01-07 ENDFIELD 'description': Conduct surveys using Google Forms and interviews via Zoom to identify key features users want in the app. ENDTASK" +
+          "'taskName': Design app UI/UX ENDFIELD 'duration': 2025-01-08 to 2025-01-14 ENDFIELD 'description': Create wireframes in Figma and high-fidelity mockups in Adobe XD, focusing on intuitive navigation and accessibility. ENDTASK" +
+          "'taskName': Test app functionality ENDFIELD 'duration': 2025-02-11 to 2025-02-20 ENDFIELD 'description': Use Flutter and Firebase to build features like expense tracking, budgeting, and generating financial reports. ENDTASK",
+
+        // content: `Generate a detailed project plan for the following idea: ${projectIdea}, starting from ${startDate} and ending on ${endDate}. The output should be in this format: \n\n` +
+        //   '[{"taskName": "Research user needs", "duration": "2025-01-01 to 2025-01-07", "description": "Conduct surveys using Google Forms and interviews via Zoom to identify key features users want in the app."}, ' +
+        //   '{"taskName": "Design app UI/UX", "duration": "2025-01-08 to 2025-01-14", "description": "Create wireframes in Figma and high-fidelity mockups in Adobe XD, focusing on intuitive navigation and accessibility."}, ' +
+        //   '{"taskName": "Develop core functionality", "duration": "2025-01-15 to 2025-02-10", "description": "Use Flutter and Firebase to build features like expense tracking, budgeting, and generating financial reports."}, ' +
+        //   '{"taskName": "Test app functionality", "duration": "2025-02-11 to 2025-02-20", "description": "Perform unit testing with Jest and integration testing using Selenium to identify and fix bugs."}, ' +
+        //   '{"taskName": "Launch and gather feedback", "duration": "2025-02-21 to 2025-03-01", "description": "Deploy the app on Google Play and the Apple App Store, and use tools like Google Analytics and user reviews for feedback."}]'
+      },
     ],
-    temperature: 0.6
+    temperature: 0.6,
   };
 
   const headers = {
